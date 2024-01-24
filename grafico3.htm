@@ -3,34 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scacchiera</title>
+    <title>Quadrati 10x10</title>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
         table {
             border-collapse: collapse;
-            border: 2px solid black;
         }
 
         td {
-            width: 50px;
-            height: 50px;
-            border: 1px solid black;
+            width: 14px;
+            height: 14px;
+            border: 2px solid black;
+            margin: 2px;
         }
 
-        /* Colora le celle pari */
-        td:nth-child(even) {
+        .grigio-chiaro {
             background-color: #f0f0f0;
         }
 
-        /* Colora le celle dispari */
-        td:nth-child(odd) {
+        .grigio-scuro {
             background-color: #bfbfbf;
         }
     </style>
@@ -38,21 +28,32 @@
 <body>
     <table>
         <tbody>
-            <!-- Creazione della scacchiera -->
             <?php
-            for ($row = 1; $row <= 8; $row++) {
-                echo "<tr>";
-                for ($col = 1; $col <= 8; $col++) {
-                    // Determina il colore della cella in base alla somma della riga e della colonna
-                    $sum = $row + $col;
-                    $cellColor = $sum % 2 == 0 ? 'even' : 'odd';
+            $numQuadratiPerRiga = 10;
 
-                    echo "<td class='$cellColor'></td>";
+            for ($i = 1; $i <= 100; $i++) {
+                // Calcola se il numero è pari o dispari
+                $pari = $i % 2 == 0;
+
+                // Calcola il colore dello sfondo in base alla parità del numero
+                $sfondoClasse = $pari ? 'grigio-chiaro' : 'grigio-scuro';
+
+                // Inserisce una nuova riga ogni 10 quadrati
+                if (($i - 1) % $numQuadratiPerRiga == 0) {
+                    echo '<tr>';
                 }
-                echo "</tr>";
+
+                // Stampa il quadrato nella cella della tabella
+                echo "<td class='$sfondoClasse'></td>";
+
+                // Chiude la riga ogni 10 quadrati
+                if ($i % $numQuadratiPerRiga == 0) {
+                    echo '</tr>';
+                }
             }
             ?>
         </tbody>
     </table>
 </body>
 </html>
+
