@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scacchiera</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 2px solid black;
+        }
+
+        td {
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+        }
+
+        /* Colora le celle pari */
+        td:nth-child(even) {
+            background-color: #f0f0f0;
+        }
+
+        /* Colora le celle dispari */
+        td:nth-child(odd) {
+            background-color: #bfbfbf;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tbody>
+            <!-- Creazione della scacchiera -->
+            <?php
+            for ($row = 1; $row <= 8; $row++) {
+                echo "<tr>";
+                for ($col = 1; $col <= 8; $col++) {
+                    // Determina il colore della cella in base alla somma della riga e della colonna
+                    $sum = $row + $col;
+                    $cellColor = $sum % 2 == 0 ? 'even' : 'odd';
+
+                    echo "<td class='$cellColor'></td>";
+                }
+                echo "</tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</body>
+</html>
