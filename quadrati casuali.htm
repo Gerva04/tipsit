@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #blueDiv, #yellowDiv {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+    }
+    #blueDiv {
+      background-color: blue;
+    }
+    #yellowDiv {
+      background-color: yellow;
+    }
+    #overlapDiv {
+      background-color: red;
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      opacity: 100px;
+      transition: opacity 0.5s;
+    }
+  </style>
+</head>
+<body>
+  <div id="blueDiv"></div>
+  <div id="yellowDiv"></div>
+  <div id="overlapDiv"></div>
+
+  <script>
+    const blueDiv = document.getElementById('blueDiv');
+    const yellowDiv = document.getElementById('yellowDiv');
+    const overlapDiv = document.getElementById('overlapDiv');
+
+    function randomPosition() {
+      return Math.floor(Math.random() * (window.innerWidth - 100));
+    }
+
+    function randomTop() {
+      return Math.floor(Math.random() * (window.innerHeight - 100));
+    }
+
+    function randomColor() {
+      return '#' + Math.floor(Math.random()*16777215).toString(16);
+    }
+
+    function updatePositions() {
+      blueDiv.style.left = randomPosition() + 'px';
+      blueDiv.style.top = randomTop() + 'px';
+      yellowDiv.style.left = randomPosition() + 'px';
+      yellowDiv.style.top = randomTop() + 'px';
+      overlapDiv.style.left = Math.min(blueDiv.offsetLeft, yellowDiv.offsetLeft) + 'px';
+      overlapDiv.style.top = Math.min(blueDiv.offsetTop, yellowDiv.offsetTop) + 'px';
+      overlapDiv.style.width = Math.abs(blueDiv.offsetLeft - yellowDiv.offsetLeft) + 'px';
+      overlapDiv.style.height = Math.abs(blueDiv.offsetTop - yellowDiv.offsetTop) + 'px';
+      overlapDiv.style.opacity = (overlapDiv.offsetWidth > 0 && overlapDiv.offsetHeight > 0) ? '1' : '0';
+    }
+
+    // Initialize positions
+    updatePositions();
+
+    // Update positions every second
+    setInterval(updatePositions, 1000);
+  </script>
+</body>
+</html>
