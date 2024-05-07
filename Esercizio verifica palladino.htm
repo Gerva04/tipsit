@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .quadrato {
+            height: 20px;
+            width: 20px;
+            border: 1px solid black;
+            margin:5px;
+            padding:5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script>
+        const container = document.getElementById('container');
+        const colors = [
+            { category: 'even', color: 'rgb(245, 209, 215)' },
+            { category: 'odd', color: 'rgb(51, 152, 246)' },
+            { category: 'multipleOf3', color: 'rgb(246, 152, 51)' },
+            { category: 'multipleOf5', color: 'rgb(152, 246, 51)' },
+            { category: 'multipleOf10', color: 'rgb(51, 246, 246)' }
+        ];
+
+        for (let i = 0; i < 100; i++) {
+            const number = Math.floor(Math.random() * 101);
+            const color = getColor(number);
+            const square = document.createElement('div');
+            square.classList.add('quadrato');
+            square.style.backgroundColor = color;
+            square.textContent = number;
+            container.appendChild(square);
+        }
+
+        function getColor(number) {
+            if (number % 2 === 0) {
+                return colors[0].color;
+            } else if (number % 3 === 0) {
+                return colors[2].color;
+            } else if (number % 5 === 0) {
+                return colors[3].color;
+            } else if (number % 10 === 0) {
+                return colors[4].color;
+            } else {
+                return colors[1].color;
+            }
+        }
+    </script>
+</body>
+</html>
