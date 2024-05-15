@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test11</title>
+    <style>
+        .miediv {
+            position: absolute;
+            height: 50px;
+            width: 50px;
+            border: 1px solid black;
+            top: 20px;
+        }
+    </style>
+    <script>
+        function inizia() {
+            var divs = document.getElementsByName('A');
+            var length = divs.length;
+            var pos = -1;
+            var k = 0
+            var posizione =new Array()
+            posizione = [0, 1, 5, 2, 4, 1, 6, 1, 3]
+            
+
+            // Initial positioning and coloring of divs
+            for (var i = 0; i < length; i++) {
+                
+                divs[i].style.left = (i * 60) + 'px';
+            }
+
+            // Interval to change the background color of the divs
+            setInterval(function () {
+                if (pos < length - 1) {
+                    for (var i = 0; i < length; i++) {
+                        divs[i].style.backgroundColor = 'yellow';
+                    }
+                    pos=posizione[k++];
+                    divs[pos].style.backgroundColor = 'red';
+                } else {
+                    pos = -1;
+                    k = 0
+                }
+            }, 300);
+        }
+    </script>
+</head>
+<body onload="inizia()">
+    <div name="A" class="miediv"></div>
+    <div name="A" class="miediv"></div>
+    <div name="A" class="miediv"></div>
+    <div name="A" class="miediv"></div>
+    <div name="A" class="miediv"></div>
+    <div name="A" class="miediv"></div>
+    <div name="A" class="miediv"></div>
+    <div name="A" class="miediv"></div>
+</body>
+</html>
