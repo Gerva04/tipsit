@@ -1,0 +1,57 @@
+
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrice 8x8</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td, th {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Matrice 8x8</h1>
+    <table id="matrice"></table>
+
+    <script>
+        // Creiamo una matrice vuota
+        let matrice = [];
+
+        // Popoliamo la matrice con array 8x8
+        for (let i = 0; i < 8; i++) {
+            matrice[i] = [];
+            for (let j = 0; j < 8; j++) {
+                matrice[i][j] = i * 8 + j + 1; // Inseriamo un valore di esempio
+              
+            }
+        }
+
+        // Funzione per visualizzare la matrice in una tabella HTML
+        function visualizzaMatrice(matrice) {
+            const tabella = document.getElementById('matrice');
+
+            for (let i = 0; i < matrice.length; i++) {
+                const riga = document.createElement('tr');
+                for (let j = 0; j < matrice[i].length; j++) {
+                    const cella = document.createElement('td');
+                    cella.textContent = matrice[i][j];
+                    riga.appendChild(cella);
+                }
+                tabella.appendChild(riga);
+            }
+        }
+        
+
+        // Chiamiamo la funzione per visualizzare la matrice
+        visualizzaMatrice(matrice);
+    </script>
+</body>
+</html>
