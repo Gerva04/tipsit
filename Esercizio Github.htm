@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore di Numeri Casuali</title>
+    <style>
+        /* Stili di base per il corpo della pagina */
+        body {
+            font-family: Arial, sans-serif; /* Font utilizzato per il testo */
+            text-align: center; /* Centra il contenuto */
+            margin: 20px; /* Margine intorno al corpo */
+        }
+        /* Stili per la sezione che mostra i numeri generati */
+        #numbers {
+            margin-top: 20px; /* Margine sopra il div */
+            font-size: 24px; /* Dimensione del font */
+            font-weight: bold; /* Grassetto per il font */
+        }
+        /* Stili per il pulsante di generazione */
+        #generate-button {
+            padding: 10px 20px; /* Padding per il pulsante */
+            font-size: 16px; /* Dimensione del font del pulsante */
+            cursor: pointer; /* Cambia il cursore al passaggio sopra il pulsante */
+        }
+    </style>
+</head>
+<body>
+    <h1>Generatore di Numeri Casuali</h1>
+    <button id="generate-button">Genera Numero Casuale</button>
+    <div id="numbers"></div> <!-- Div per visualizzare il numero generato -->
+
+    <script>
+        // Funzione per generare un numero casuale tra 1 e 100
+        function getRandomNumber() {
+            return Math.floor(Math.random() * 100) + 1; // Restituisce un numero intero da 1 a 100
+        }
+
+        // Funzione per aggiornare il contenuto della pagina con il numero generato
+        function updateNumbers() {
+            const numbersDiv = document.getElementById('numbers'); // Seleziona il div per mostrare il numero
+            const randomNumber = getRandomNumber(); // Chiama la funzione per ottenere un numero casuale
+            numbersDiv.textContent = `Numero Casuale: ${randomNumber}`; // Aggiorna il contenuto del div
+        }
+
+        // Aggiunge un event listener al pulsante per generare un numero quando viene cliccato
+        document.getElementById('generate-button').addEventListener('click', updateNumbers);
+    </script>
+</body>
+</html>
