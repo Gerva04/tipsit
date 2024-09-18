@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore di Numeri Casuali</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        #numbers {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        #generate-button, #even-button, #odd-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px; /* Aggiungi margine tra i pulsanti */
+        }
+    </style>
+</head>
+<body>
+    <h1>Generatore di Numeri </h1>
+    <button id="even-button">Genera Numero Pari</button>
+    <button id="odd-button">Genera Numero Dispari</button>
+    <div id="numbers"></div>
+
+    <script>
+        // Funzione per generare un numero casuale pari
+        function getRandomEvenNumber() {
+            return Math.floor(Math.random() * 50) * 2 + 2; // Restituisce un numero pari tra 2 e 100
+        }
+
+        // Funzione per generare un numero casuale dispari
+        function getRandomOddNumber() {
+            return Math.floor(Math.random() * 50) * 2 + 1; // Restituisce un numero dispari tra 1 e 99
+        }
+
+        // Funzione per aggiornare il contenuto della pagina con il numero generato
+        function updateNumbers(isEven) {
+            const numbersDiv = document.getElementById('numbers');
+            const randomNumber = isEven ? getRandomEvenNumber() : getRandomOddNumber(); // Sceglie quale funzione chiamare
+            numbersDiv.textContent = `Numero Casuale: ${randomNumber}`; // Aggiorna il contenuto del div
+        }
+
+        // Aggiunge un event listener ai pulsanti per generare numeri pari o dispari
+        document.getElementById('even-button').addEventListener('click', () => updateNumbers(true));
+        document.getElementById('odd-button').addEventListener('click', () => updateNumbers(false));
+    </script>
+</body>
+</html>
